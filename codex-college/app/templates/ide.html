@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Fuckin Working IDE</title>
+<title>Working IDE</title>
 <style type="text/css" media="screen">
     .container {
       width: 100%;
@@ -136,12 +136,13 @@
         }
 
         function run(){
+            document.getElementById('output').innerHTML = '';
             code = editor.getValue();
             inputs = document.getElementById('input').value;
             language = document.getElementById("language-mode");
             language = language.options[language.selectedIndex].text.toLowerCase();
 
-            url = 'http://ec2-15-207-71-189.ap-south-1.compute.amazonaws.com:8081/';
+            // url = 'http://ec2-15-207-71-189.ap-south-1.compute.amazonaws.com:8081/';
             url = 'http://127.0.0.1:8000/';
             url = url+language;
             data = JSON.stringify({'code':code, 'input':inputs});
