@@ -142,9 +142,7 @@
             language = document.getElementById("language-mode");
             language = language.options[language.selectedIndex].text.toLowerCase();
 
-            // url = 'http://ec2-15-207-71-189.ap-south-1.compute.amazonaws.com:8081/';
-            url = 'http://127.0.0.1:8000/';
-            url = url+language;
+            url = '/'+language;
             data = JSON.stringify({'code':code, 'input':inputs});
 
             req(url, 'POST', handle_respose, data);

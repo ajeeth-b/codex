@@ -41,6 +41,7 @@ class CodEX:
 			return ('runtime', {'stdout':e.output, 'stderr':e.error})
 		except Exception as e:
 			rmtree(folder)
+			print('internal error', 'codex - line 44',e)
 			return ('internal', {'error':e})
 
 	def _write_file_content(self, file_path, content):

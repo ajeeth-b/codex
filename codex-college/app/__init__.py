@@ -8,9 +8,8 @@ def create_app():
 	app = Flask(__name__)
 	CORS(app)
 
-	app.config['UNFORGE_URL'] = 'http://127.0.0.1:5000/codex'
-	# app.config['UNFORGE_URL'] = 'http://65.1.210.183/codex'
-	app.config['UNFORGE_KEY'] = 'temp'
+	from . import config
+	app.config.from_object(config)
 
 	@app.route('/')
 	def get_all_languages():
