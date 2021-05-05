@@ -19,6 +19,6 @@
       - [/home/codex/Dockerfile/c$](https://github.com/ajeeth-b/codex/tree/main/codex/Dockerfile/c) ```sudo docker build -t lang-c .``` .
 - updating application configuration file at **[../codex/app/config.py](https://github.com/ajeeth-b/codex/blob/main/codex/app/config.py)**
   - __UNFORGE_URL__ should point to the main unforge application.
-  - __UNFORGE_KEY__ this key should be same as the __TESTCASE_API_KEY__ in the unforge config.
+  - __UNFORGE_KEY__ this key should be same as the [__TESTCASE_API_KEY__](https://github.com/ajeeth-b/UnForge/blob/hackathon/unforge/instance/config.py#L26) in the unforge config.
 
 - from **run.py** you can find a variable name pointing to app pointing to flask applicaiton. use the vaible for deploying with application server.
