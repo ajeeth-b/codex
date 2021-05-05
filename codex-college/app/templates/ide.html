@@ -104,6 +104,7 @@
 
         function handle_respose(data){
             output = document.getElementById('output');
+            console.log(data);
             if (data.status == 'success'){
                 console.log(data.stdout);
                 if (data.stdout == null){

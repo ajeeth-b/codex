@@ -9,4 +9,4 @@ except Exception as e:
 	pass
 
 
-CONTAINER_TIMEOUT = 'sleep ' + str(60*2) +'s'
+CONTAINER_TIMEOUT = 'sleep ' + str(60*1) +'s'

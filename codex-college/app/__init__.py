@@ -27,7 +27,7 @@ def create_app():
 			inputs = request.json.get('input','')
 
 			status, output = codex.execute(language, request.json['code'], inputs)
-			if status == 'success' or status == 'compilation' or status == 'runtime':
+			if status == 'success' or status == 'compilation' or status == 'runtime' or status == 'timelimitexceded':
 				data = {
 					'status':'success',
 					'message':status,
@@ -43,6 +43,7 @@ def create_app():
 
 			resp = jsonify(data)
 		except Exception as e:
+		# except ZeroDivisionError:
 			resp = jsonify({'status':'internal error'})
 		return resp
 

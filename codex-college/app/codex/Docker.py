@@ -76,7 +76,10 @@ class Docker:
 			if lang_exec['build_cmd']:
 				self._build(container, lang_exec['build_cmd'])
 			output = self._exec(container, lang_exec['run_cmd'])
-			self._kill_container(container)
+			try:
+				self._kill_container(container)
+			except APIError:
+				raise TimeLimitExceeded()
 			return output
 		except Exception as e:
 			self._kill_container(container)

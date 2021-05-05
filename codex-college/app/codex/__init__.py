@@ -31,16 +31,19 @@ class CodEX:
 
 		try:
 			output = self.docker.run_container(language, lang_utils, folder)
-			rmtree(folder)
+			self.delete_docker_volume(folder)
 			return ('success',{'stdout':output[0], 'stderr':output[1]})
 		except CodeCompliationError as e:
-			rmtree(folder)
+			self.delete_docker_volume(folder)
 			return ('compilation', {'stdout':e.output, 'stderr':e.error})
 		except CodeRuntimeError as e:
-			rmtree(folder)
+			self.delete_docker_volume(folder)
 			return ('runtime', {'stdout':e.output, 'stderr':e.error})
+		except TimeLimitExceeded as e:
+			self.delete_docker_volume(folder)
+			return ('timelimitexceded', {'stdout':None, 'stderr':None})
 		except Exception as e:
-			rmtree(folder)
+			self.delete_docker_volume(folder)
 			print('internal error', 'codex - line 44',e)
 			return ('internal', {'error':e})
 
@@ -48,3 +51,8 @@ class CodEX:
 		with open(file_path, 'w') as f:
 			f.write(content)
 
+	def delete_docker_volume(self, folder):
+		try:
+			rmtree(folder)
+		except FileNotFoundError:
+			pass
