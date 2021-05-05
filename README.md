@@ -13,7 +13,7 @@
   - You can find a directory **[../code/Dockerfile/](https://github.com/ajeeth-b/codex/tree/main/codex/Dockerfile)** with sub directory naming the supported languages.
   - In each sub dir there is dockefile.
   - ** NEED TO BUILD THEM WITH PROPER TAG NAME ** for application to access containers.
-  - Build each image with tag name -> **lang-< language name >**. (language name is the sub dir name).
+  - Build each image with tag name ```lang-< language name >```. (language name is the sub dir name).
     - currently supporting two language and their commands.
       - [/home/codex/Dockerfile/python3$](https://github.com/ajeeth-b/codex/tree/main/codex/Dockerfile/python3) ```sudo docker build -t lang-python3 .``` .
       - [/home/codex/Dockerfile/c$](https://github.com/ajeeth-b/codex/tree/main/codex/Dockerfile/c) ```sudo docker build -t lang-c .``` .
