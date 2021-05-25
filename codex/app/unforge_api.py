@@ -43,7 +43,7 @@ def execute_with_testcase(language):
 		inputs = testcase['input']
 
 		status, output = codex.execute(language, request.json['code'], inputs)
-		if status == 'success' or status == 'compilation' or status == 'runtime':
+		if status == 'success' or status == 'compilation' or status == 'runtime' or status == 'timelimitexceded':
 			data = {
 				'status':'success',
 				'message':status,
@@ -57,7 +57,7 @@ def execute_with_testcase(language):
 			}
 	
 		if data and data['status'] == 'success':
-			stdout = data['stdout'].decode('ascii') if data['stdout'] else ''
+			stdout = data['stdout']
 			# print('outp',stdout, len(stdout))
 			# print('exp',testcase['output'], len(testcase['output']))
 			# print(testcase['output'] == stdout)

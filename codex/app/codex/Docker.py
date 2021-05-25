@@ -109,6 +109,11 @@ class Docker:
 			print(e, e.explanation)
 			raise InternalError()
 
+		if type(self.output[0]) == bytes:
+			self.output[0] = self.output[0].decode('utf-8')
+		if type(self.output[1]) == bytes:
+			self.output[1] = self.output[1].decode('utf-8')
+
 		if exit_code is None:
 			print('from exec', exit_code)
 			raise ExecutionError(output[0], output[1])

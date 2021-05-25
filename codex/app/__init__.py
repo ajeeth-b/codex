@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, render_template
-from .codex import CodEX
 from flask_cors import CORS
+from .codex import CodEX
 
 codex = CodEX()
 
@@ -14,6 +14,10 @@ def create_app():
 	@app.route('/')
 	def get_all_languages():
 		return jsonify({'languages':codex.get_available_languages()})
+
+	@app.route('/ping')
+	def ping():
+		return jsonify({'status':'available'})
 
 	@app.route('/<language>', methods=['POST'])
 	def execute(language):
@@ -39,8 +43,7 @@ def create_app():
 					'status':'failed',
 					'message':'internal error'
 				}
-				print(output)
-
+			print(output)
 			resp = jsonify(data)
 		except Exception as e:
 		# except ZeroDivisionError:
